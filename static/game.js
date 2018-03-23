@@ -9,6 +9,9 @@ socket.on('message', function(data) {
 socket.on('news', function(data) {
   messages.innerHTML += "<div class='message news'>"+data+"</div>";
 });
+socket.on('alert', function(data) {
+  messages.innerHTML += "<div class='message alert'>"+data+"</div>";
+});
 
 var pData = {
   name: undefined,
