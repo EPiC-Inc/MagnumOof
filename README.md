@@ -11,3 +11,8 @@ Download this
 
 Install dependencies
 > `npm install --save express socket.io`
+
+Start the game server
+> `node server.js [port]`
+
+Note: [port] is optional, defaults to 80
