@@ -6,4 +6,8 @@ A stupid multiplayer game
 * NPM (Node Package Manager)
 
 # Setup
-Download this, and run `npm install --save express socket.io` in the current folder
+Download this
+> `git clone https://github.com/EPiC-Inc/MagnumOof.git`
+
+Install dependencies
+> `npm install --save express socket.io`
