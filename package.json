@@ -1,0 +1,16 @@
+{
+  "name": "multiplayertest",
+  "version": "1.0.0",
+  "description": "multiplayer test, random tag thing?idk",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "Emmett W-B",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "processing-js": "^1.6.6",
+    "socket.io": "^2.0.4"
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
+    <title>test</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Aldrich');
+      :root {
+        --messageColor: #00ccff;
+      }
+      canvas {
+        width: 800px;
+        height: 600px;
+        border: 5px solid black;
+      }
+      .message {
+        border: 3px solid blue;
+        font-family: 'Aldrich';
+        background-color: var(--messageColor);
+      }
+      .news {
+        border: 3px solid darkgreen;
+        font-family: 'Aldrich';
+        background-color: green;
+      }
+      .overlay {
+        font-family: 'Aldrich';
+        background-color: #737373;
+        top:0;
+        left: 0px;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        align-items: center;
+      }
+      #messages {
+        overflow: scroll;
+        height: 600px;
+        width: 600px;
+      }
+      button {
+        font-family: 'Aldrich';
+      }
+      input {
+        font-family: 'Aldrich';
+      }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div class='overlay' id='login'>
+      <p>Nickname:</p><input id="playername"></input><br>
+      <button onclick="connect()" id="connectBtn">Connect</button>
+      <p>Blue = you<br>
+        Orange = your target<br>
+        Green = everyone else<br>
+        <br>
+        Press Space to stab
+      </p>
+    </div>
+    <table>
+      <tr>
+        <th>
+          <canvas id="canvas"></canvas>
+        </th>
+        <th>
+          <div id="messages">
+          </div>
+        </th>
+      </tr>
+  </table>
+  <button type='button' id='reconnect' onClick='reconnect()' disabled='true'>Reconnect</button><br>
+  <input id='msg'></input><button type='button' id='send' onclick='send()'>Send</button>
+  </body>
+  <script src="/static/game.js"></script>
+</html>
