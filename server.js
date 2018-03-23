@@ -43,14 +43,14 @@ function assignTargets() {
   }
 }
 function shift(array) {
-  console.log('Start');
-  console.log(array);
+  //console.log('Start');
+  //console.log(array);
   var currentIndex = array.length;
   var temporaryValue, randomIndex;
 
   array.unshift(array.pop());
-  console.log('End');
-  console.log(array);
+  //console.log('End');
+  //console.log(array);
   return array;
 }
 
@@ -63,10 +63,10 @@ function shuffleTargets() {
   var i = 0;
   arr = shift(arr);
   for (var key in players) {
-    console.log(key);
+    //console.log(key);
     data[String(key)] = arr[i];
-    console.log("DATA:");
-    console.log(data);
+    //console.log("DATA:");
+    //console.log(data);
     i++;
   }
   io.sockets.emit('targets', data);
