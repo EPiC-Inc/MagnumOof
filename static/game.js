@@ -83,6 +83,7 @@ function reconnect() {
   document.getElementById('reconnect').disabled = true;
   lScreen.style.display = 'none';
   pData.name=document.getElementById('playername').value.substring(0, 11);
+  pData.dead=false;
   socket.emit('old player', pData);
 }
 
