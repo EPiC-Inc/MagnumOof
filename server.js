@@ -117,9 +117,9 @@ io.on('connection', function(socket) {
   });
   socket.on('disconnect', function() {
     if (players[socket.id] == undefined) {
-      console.log('error');
+      //console.log('error');
     }else{
-      io.sockets.emit("alert", "Player '"+players[socket.id].name+"' left")
+      io.sockets.emit("news", "Player '"+players[socket.id].name+"' left")
       delete players[socket.id];
       setTimeout(shuffleTargets, targetDelay);
     }
