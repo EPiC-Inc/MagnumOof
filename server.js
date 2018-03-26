@@ -129,9 +129,11 @@ io.on('connection', function(socket) {
   });
   socket.on('kill', function(data) {
     //console.log(players);
-    io.sockets.emit('killed', data);
-    delete players[data];
-    setTimeout(shuffleTargets, targetDelay);
+    if (socket.id !== data) {
+      io.sockets.emit('killed', data);
+      delete players[data];
+      setTimeout(shuffleTargets, targetDelay);
+    }
   });
 });
 setInterval(function() {
