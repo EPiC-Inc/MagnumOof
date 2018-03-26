@@ -17,6 +17,7 @@ var pData = {
   name: undefined,
   target: undefined,
   hunter: undefined,
+  dead: false,
   up: false,
   down: false,
   left: false,
@@ -91,7 +92,7 @@ function tag() {
   var b = pData.y - lastData.y;
   var dist = Math.sqrt( a*a + b*b );
   console.log(dist);
-  if (dist < 50) {
+  if (dist < 50 && dead == false) {
     toKill = pData.target;
     pData.target = lastData.target;
     socket.emit('kill', toKill);
@@ -170,6 +171,7 @@ socket.on('targets', function(data) {
 socket.on('killed', function(data) {
   if (data == socket.id) {
     document.getElementById('reconnect').disabled = false;
+    pData.dead = true;
     //socket.disconnect();
   }
 });
