@@ -92,7 +92,7 @@ function tag() {
   var b = pData.y - lastData.y;
   var dist = Math.sqrt( a*a + b*b );
   console.log(dist);
-  if (dist < 50 && dead == false) {
+  if (dist < 50 && pData.dead == false) {
     toKill = pData.target;
     pData.target = lastData.target;
     socket.emit('kill', toKill);
