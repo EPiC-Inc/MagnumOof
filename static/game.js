@@ -42,6 +42,18 @@ document.addEventListener('keydown', function(event) {
     case 83: // S
       pData.down = true;
       break;
+    case 37: // left
+      pData.left = true;
+      break;
+    case 38: // up
+      pData.up = true;
+      break;
+    case 39: // right
+      pData.right = true;
+      break;
+    case 40: // down
+      pData.down = true;
+      break;
     case 32: // Spacebar (to tag)
       tag();
       //socket.emit('message', 'test');
@@ -60,6 +72,18 @@ document.addEventListener('keyup', function(event) {
       pData.right = false;
       break;
     case 83: // S
+      pData.down = false;
+      break;
+    case 37: // left
+      pData.left = false;
+      break;
+    case 38: // up
+      pData.up = false;
+      break;
+    case 39: // right
+      pData.right = false;
+      break;
+    case 40: // down
       pData.down = false;
       break;
   }
