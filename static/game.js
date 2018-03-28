@@ -161,7 +161,15 @@ context.font = "10px consolas";
 socket.on('state', function(players) {
   scores.innerHTML = '';
   for (id in players) {
-    scores.innerHTML += "<div class='message'>"+players[id].name+" : "+players[id].kills+"</div>";
+    var end='';
+    var k = players[id].kills;
+    if (k > 4) {
+      end = '<br>RAMPAGE!';
+    }
+    if (k > 9) {
+      end = '<br>KILLING SPREE!';
+    }
+    scores.innerHTML += "<div class='message'>"+players[id].name+" : "+players[id].kills+end+"</div>";
   }
   if (pData.name != undefined && pData.target != undefined) {
     pData.x = players[socket.id].x;
