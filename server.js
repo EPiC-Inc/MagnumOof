@@ -81,6 +81,7 @@ io.on('connection', function(socket) {
       target: undefined,
       hunter: undefined,
       dead: false,
+      kills: 0,
       x: Math.floor(Math.random() * 7) * 100 + 100,
       y: Math.floor(Math.random() * 5) * 100 + 100
     };
@@ -93,6 +94,7 @@ io.on('connection', function(socket) {
       target: undefined,
       hunter: undefined,
       dead: false,
+      kills: 0,
       x: Math.floor(Math.random() * 7) * 100 + 100,
       y: Math.floor(Math.random() * 5) * 100 + 100
     };
