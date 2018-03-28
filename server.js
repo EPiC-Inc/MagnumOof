@@ -133,7 +133,7 @@ io.on('connection', function(socket) {
     //console.log(players);
     if (socket.id !== data) {
       io.sockets.emit('killed', data);
-      if (players[socket.id] !== undefined) {
+      if (players[socket.id] !== undefined && players[socket.id].target !== undefined && players[socket.id].target !== socket.id) {
         players[socket.id].kills += 1;
       }
       delete players[data];
