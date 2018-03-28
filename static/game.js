@@ -161,6 +161,7 @@ socket.on('state', function(players) {
   if (pData.name != undefined && pData.target != undefined) {
     pData.x = players[socket.id].x;
     pData.y = players[socket.id].y;
+    pData.kills = players[socket.id].kills;
     lastData = players[pData.target];
     console.log(lastData.name);
   }
