@@ -18,6 +18,7 @@ var pData = {
   target: undefined,
   hunter: undefined,
   dead: false,
+  kills: 0,
   up: false,
   down: false,
   left: false,
