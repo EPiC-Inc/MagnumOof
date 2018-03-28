@@ -159,9 +159,9 @@ canvas.height = 600;
 var context = canvas.getContext('2d');
 context.font = "10px consolas";
 socket.on('state', function(players) {
-  messages.innerHTML = '';
+  scores.innerHTML = '';
   for (id in players) {
-    messages.innerHTML += "<div class='message'>"+players[id].name+" : "+players[id].kills+"</div>";
+    scores.innerHTML += "<div class='message'>"+players[id].name+" : "+players[id].kills+"</div>";
   }
   if (pData.name != undefined && pData.target != undefined) {
     pData.x = players[socket.id].x;
