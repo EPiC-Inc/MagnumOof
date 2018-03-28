@@ -198,6 +198,7 @@ socket.on('killed', function(data) {
   if (data == socket.id) {
     document.getElementById('reconnect').disabled = false;
     pData.dead = true;
+    console.log(pData.kills);
     //socket.disconnect();
   }
 });
