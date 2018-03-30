@@ -162,14 +162,17 @@ socket.on('state', function(players) {
   scores.innerHTML = '';
   for (id in players) {
     var end='';
+    var c="class='message'";
     var k = players[id].kills;
     if (k > 4) {
       end = '<br>RAMPAGE!';
+      c="class='news'";
     }
     if (k > 9) {
       end = '<br>KILLING SPREE!';
+      c="class='alert'";
     }
-    scores.innerHTML += "<div class='message'>"+players[id].name+" : "+players[id].kills+end+"</div>";
+    scores.innerHTML += "<div "+c+">"+players[id].name+" : "+players[id].kills+end+"</div>";
   }
   if (pData.name != undefined && pData.target != undefined) {
     pData.x = players[socket.id].x;
