@@ -83,7 +83,8 @@ io.on('connection', function(socket) {
       dead: false,
       kills: 0,
       x: Math.floor(Math.random() * 7) * 100 + 100,
-      y: Math.floor(Math.random() * 5) * 100 + 100
+      y: Math.floor(Math.random() * 5) * 100 + 100,
+      i: false
     };
     setTimeout(shuffleTargets, targetDelay);
   });
@@ -96,7 +97,8 @@ io.on('connection', function(socket) {
       dead: false,
       kills: 0,
       x: Math.floor(Math.random() * 7) * 100 + 100,
-      y: Math.floor(Math.random() * 5) * 100 + 100
+      y: Math.floor(Math.random() * 5) * 100 + 100,
+      i: false
     };
     setTimeout(shuffleTargets, targetDelay);
   });
@@ -128,6 +130,9 @@ io.on('connection', function(socket) {
   });
   socket.on('message', function(data) {
     io.sockets.emit("message", data);
+  });
+  socket.on('i', function() {
+    players[socket.id].i = true;
   });
   socket.on('kill', function(data) {
     //console.log(players);
