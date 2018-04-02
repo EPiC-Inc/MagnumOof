@@ -59,6 +59,8 @@ document.addEventListener('keydown', function(event) {
       tag();
       //socket.emit('message', 'test');
       break
+    case 81:
+      socket.emit('i');
   }
 });
 document.addEventListener('keyup', function(event) {
@@ -198,12 +200,14 @@ socket.on('state', function(players) {
       context.fill();
       context.fillText(player.name, player.x-5, player.y-15);
     }else{
-      var player = players[id];
-      context.fillStyle = 'green';
-      context.beginPath();
-      context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
-      context.fill();
-      context.fillText(player.name, player.x-5, player.y-15);
+      if (!players[id].i) {
+        var player = players[id];
+        context.fillStyle = 'green';
+        context.beginPath();
+        context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
+        context.fill();
+        context.fillText(player.name, player.x-5, player.y-15);
+      }
     }
   }
 });
