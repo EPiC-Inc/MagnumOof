@@ -13,6 +13,8 @@ socket.on('alert', function(data) {
   messages.innerHTML += "<div class='message alert'>"+data+"</div>";
 });
 
+var e = false;
+
 var pData = {
   name: undefined,
   target: undefined,
@@ -59,8 +61,13 @@ document.addEventListener('keydown', function(event) {
       tag();
       //socket.emit('message', 'test');
       break
-    case 81:
+    case 18: // CTRL = invis to hunter
       socket.emit('i');
+      console.log('iiiiiii');
+      break;
+    case 81: // P to see enemy
+      e=true;
+      console.log('eeeeeee');
   }
 });
 document.addEventListener('keyup', function(event) {
@@ -115,11 +122,11 @@ function reconnect() {
 }
 
 function tag() {
-  console.log(pData.x, pData.y, lastData.x, lastData.y);
+  //console.log(pData.x, pData.y, lastData.x, lastData.y);
   var a = pData.x - lastData.x;
   var b = pData.y - lastData.y;
   var dist = Math.sqrt( a*a + b*b );
-  console.log(dist);
+  //console.log(dist);
   if (dist < 50 && pData.dead == false) {
     toKill = pData.target;
     pData.target = lastData.target;
@@ -181,45 +188,51 @@ socket.on('state', function(players) {
     pData.y = players[socket.id].y;
     pData.kills = players[socket.id].kills;
     lastData = players[pData.target];
-    console.log(lastData.name);
+    //console.log(lastData.name);
   }
   context.clearRect(0, 0, 800, 600);
   for (var id in players) {
+    var player = players[id];
+    //console.log(players[id].name);
     if (id == socket.id) {
-      var player = players[id];
       context.fillStyle = 'blue';
       context.beginPath();
       context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
       context.fill();
       context.fillText("(You)", player.x-12, player.y-15);
-    }else if (id == pData.target){
-      var player = players[id];
+    }else if (id == pData.target && !players[id].i){
       context.fillStyle = 'orange';
       context.beginPath();
       context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
       context.fill();
       context.fillText(player.name, player.x-5, player.y-15);
-    }else{
-      if (!players[id].i) {
-        var player = players[id];
-        context.fillStyle = 'green';
+    }else {
+      if (id == pData.hunter && e) {
+        context.fillStyle = 'red';
         context.beginPath();
         context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
         context.fill();
         context.fillText(player.name, player.x-5, player.y-15);
+      } else if (id !== pData.target) {
+        context.fillStyle = 'green';
+        context.beginPath();
+        context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
+        context.fill();
+        context.fillText("(You)", player.x-12, player.y-15);
       }
     }
   }
 });
 socket.on('targets', function(data) {
   pData.target = data[socket.id];
+  for (k in data) {if (data[k] == socket.id) {pData.hunter = k}}
 });
 
 socket.on('killed', function(data) {
   if (data == socket.id) {
     document.getElementById('reconnect').disabled = false;
     pData.dead = true;
-    console.log('Kills : '+pData.kills);
+    //console.log('Kills : '+pData.kills);
     //socket.disconnect();
   }
 });
