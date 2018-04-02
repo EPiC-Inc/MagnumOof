@@ -132,7 +132,7 @@ io.on('connection', function(socket) {
     io.sockets.emit("message", data);
   });
   socket.on('i', function() {
-    players[socket.id].i = true;
+    if (players[socket.id] != undefined) {players[socket.id].i = true;}
   });
   socket.on('kill', function(data) {
     //console.log(players);
