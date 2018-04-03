@@ -65,7 +65,7 @@ document.addEventListener('keydown', function(event) {
       socket.emit('i');
       console.log('iiiiiii');
       break;
-    case 81: // P to see enemy
+    case 80: // P to see enemy
       e=true;
       console.log('eeeeeee');
   }
