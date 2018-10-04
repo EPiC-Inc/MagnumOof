@@ -11,7 +11,7 @@ var port = 80;
 var targetDelay = 500;//ms
 // Set the port, default 80
 if (process.argv[2] == undefined) {
-  port = 80;
+  port = process.env.PORT || 80;
 } else {
 var port = process.argv[2]; // Use node server.js <port>
 }
